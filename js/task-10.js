@@ -9,10 +9,24 @@ const buttonCreate = document.querySelector('[data-create]');
 const buttonDestroy = document.querySelector('[data-destroy]');
 const boxes = document.querySelector('#boxes');
 
-const creating = () => {
+
+function createBoxes() {
+  let size = boxes.lastChild ? boxes.lastChild.clientWidth + 10 : 30;
+
   for (let i = 1; i <= input.value; i++) {
-    console.log(i);
+    let item = document.createElement('div');
+    item.style.width = size + 'px';
+    item.style.height = size + 'px';
+    size += 10;
+    item.style.backgroundColor = getRandomHexColor();
+    boxes.append(item);
   }
+
 }
 
-buttonCreate.addEventListener('click', creating)
+function destroyBoxes() {
+  [...boxes.children].forEach(box => box.remove());
+}
+
+buttonCreate.addEventListener('click', createBoxes);
+buttonDestroy.addEventListener('click', destroyBoxes);
