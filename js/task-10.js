@@ -12,16 +12,16 @@ const boxes = document.querySelector('#boxes');
 
 function createBoxes() {
   let size = boxes.lastChild ? boxes.lastChild.clientWidth + 10 : 30;
-
+  let arr = [];
   for (let i = 1; i <= input.value; i++) {
     let item = document.createElement('div');
     item.style.width = size + 'px';
     item.style.height = size + 'px';
     size += 10;
     item.style.backgroundColor = getRandomHexColor();
-    boxes.append(item);
+    arr.push(item);
   }
-
+  boxes.append(...arr);
 }
 
 function destroyBoxes() {
