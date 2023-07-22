@@ -1,15 +1,10 @@
-const item = document.querySelector('#categories');
+const categories = document.querySelectorAll('li.item');
 
-const msg = (elem) => {
-     let text = `Number of categories: ${elem.childElementCount}\n\n` + [...elem.children]
-          .map(el => [...el.children]
-               .map(ch => {
-                    return ch.tagName === "H2" ? `Category: ${ch.textContent}` : `Elements: ${ch.childElementCount}`;
-               })
-               .join('\n'))
-          .join('\n\n');
-     return text
-};
+console.log(`Number of categories: ${categories.length}`)
 
-console.log(msg(item));
+categories.forEach(category => {
+     console.log('------------------------------')
+     console.log(`Category: ${category.firstElementChild.textContent}`);
+     console.log(`Elements: ${category.lastElementChild.children.length}`);
+});
 
